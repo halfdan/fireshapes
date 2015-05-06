@@ -1,0 +1,42 @@
+<!-- app/templates/shapes.hbs -->
+
+{{input type='text' value=filter placeholder='Filter by type'}}
+
+<table>
+<thead>
+  <tr>
+    <th>Colour</th>
+    <th>Name</th>
+    <th>Type of Shape</th>
+    <th>Creation time</th>
+  </tr>
+</thead>
+<tbody>
+{{#each shape in filteredContent}}
+  <tr>
+    <td style="background-color: {{shape.colour}}">&nbsp;</td>
+    <td>{{shape.title}}</td>
+    <td>{{shape.type}}</td>
+    <td>{{shape.timestamp}}</td>
+  </tr>
+{{/each}}
+</tbody>
+</table>
+
+<hr />
+
+<h2>New Shape</h2>
+<ul class="shape-form">
+  <li>
+    {{input value=title placeholder="Name your shape"}}
+  </li>
+  <li>
+    {{spectrum-color-picker color=colour preferredFormat='hsl'}}
+  </li>
+  <li>
+    {{input value=type placeholder="Type of shape"}}
+  </li>
+  <li>
+    <button {{action "saveShape"}}>Save</button>
+  </li>
+</ul>
